@@ -86,6 +86,12 @@ hooks.Filters.ENV_PATCHES.add_item(
         'mongodb_parameters["authsource"] = "{{ MONGO_AUTH_SOURCE or "" }}"',
     ),
 )
+hooks.Filters.ENV_PATCHES.add_item(
+    (
+        "openedx-lms-common-settings",
+        'mongodb_parameters["ssl"] = True',
+    ),
+)
 # CMS
 hooks.Filters.ENV_PATCHES.add_item(
     (
@@ -99,7 +105,12 @@ hooks.Filters.ENV_PATCHES.add_item(
         'mongodb_parameters["authsource"] = "{{ MONGO_AUTH_SOURCE or "" }}"',
     ),
 )
-
+hooks.Filters.ENV_PATCHES.add_item(
+    (
+        "openedx-lms-common-settings",
+        'mongodb_parameters["ssl"] = True',
+    ),
+)
 # Load all configuration entries
 hooks.Filters.CONFIG_DEFAULTS.add_items([(f"TUTORMONGO_{key}", value) for key, value in config["defaults"].items()])
 hooks.Filters.CONFIG_UNIQUE.add_items([(f"TUTORMONGO_{key}", value) for key, value in config["unique"].items()])
